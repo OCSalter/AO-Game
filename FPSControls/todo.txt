@@ -1,0 +1,7 @@
+- Weapon Selection
+
+- Hitscan
+
+- Projectile bullets
+
+- Health Class

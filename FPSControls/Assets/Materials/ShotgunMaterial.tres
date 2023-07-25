@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b6et7lfwcrjgt"]
+
+[ext_resource type="Texture2D" uid="uid://ditmouqpywwf2" path="res://Assets/Textures/Shotgun_UE4_BaseColor.png" id="1_inhny"]
+[ext_resource type="Texture2D" uid="uid://14dprg1jj5j" path="res://Assets/Textures/Shotgun_UE4_OcclusionRoughnessMetallic.png" id="2_6tlon"]
+[ext_resource type="Texture2D" uid="uid://bhrah6ejqv1op" path="res://Assets/Textures/Shotgun_UE4_Normal.png" id="2_qj85m"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_hvnc6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xvmx"]
+render_priority = 0
+shader = ExtResource("3_hvnc6")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_8xvmx")
+albedo_texture = ExtResource("1_inhny")
+metallic = 1.0
+metallic_texture = ExtResource("2_6tlon")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_6tlon")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_qj85m")
+ao_enabled = true
+ao_texture = ExtResource("2_6tlon")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqccu8d6vv8lr"]
+
+[ext_resource type="Material" uid="uid://b6et7lfwcrjgt" path="res://Assets/Materials/ShotgunMaterial.tres" id="1_1hv4n"]
+[ext_resource type="PackedScene" uid="uid://dxyfh7kxfdmrs" path="res://Assets/Player/PlayerBody.tscn" id="1_hcf6v"]
+[ext_resource type="PackedScene" uid="uid://c8gbcowtxya74" path="res://Assets/Objects/target.tscn" id="3_vwegb"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ismw0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_unxnf"]
+size = Vector2(500, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7nw1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n0oy2"]
+
+[node name="World" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ismw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("1_1hv4n")
+mesh = SubResource("PlaneMesh_unxnf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.471843, 0.881683, 0, -0.881683, 0.471843, 0, 1.11232, 0)
+
+[node name="PlayerContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.74926)
+
+[node name="PlayerBody" parent="PlayerContainer" instance=ExtResource("1_hcf6v")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_r7nw1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_n0oy2")
+
+[node name="Target" parent="." instance=ExtResource("3_vwegb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57259, 2.83523, 0)
