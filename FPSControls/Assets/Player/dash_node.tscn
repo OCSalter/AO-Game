@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbot5u4kvexfd"]
+
+[ext_resource type="Script" path="res://Scripts/Player/dash_node.gd" id="1_aefvj"]
+
+[node name="DashNode" type="Node3D"]
+script = ExtResource("1_aefvj")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true

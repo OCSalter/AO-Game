@@ -3,7 +3,7 @@ extends Equipment
 class_name Shotgun
 
 const DAMAGE = 4
-const RANGE = 100
+const RANGE = 1000
 
 func fire(camera_position: Vector3, camera_transform: Transform3D) -> void:
 	print("shotgun fire")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqccu8d6vv8lr"]
+[gd_scene load_steps=9 format=3 uid="uid://dqccu8d6vv8lr"]
 
 [ext_resource type="Material" uid="uid://b6et7lfwcrjgt" path="res://Assets/Materials/ShotgunMaterial.tres" id="1_1hv4n"]
 [ext_resource type="PackedScene" uid="uid://dxyfh7kxfdmrs" path="res://Assets/Player/PlayerBody.tscn" id="1_hcf6v"]
 [ext_resource type="PackedScene" uid="uid://c8gbcowtxya74" path="res://Assets/Objects/target.tscn" id="3_vwegb"]
+[ext_resource type="PackedScene" uid="uid://cbot5u4kvexfd" path="res://Assets/Player/dash_node.tscn" id="4_2qa0w"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ismw0"]
 
@@ -42,3 +43,5 @@ mesh = SubResource("BoxMesh_n0oy2")
 
 [node name="Target" parent="." instance=ExtResource("3_vwegb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57259, 2.83523, 0)
+
+[node name="DashNode" parent="." instance=ExtResource("4_2qa0w")]
