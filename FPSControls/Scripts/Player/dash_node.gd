@@ -7,6 +7,7 @@ func setup(tc: float, td: float):
 	cooldown_timer.wait_time = tc
 	dash_timer.wait_time = td
 
+
 func start_dash():
 	cooldown_timer.start()
 	dash_timer.start()
