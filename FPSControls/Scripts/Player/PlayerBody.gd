@@ -8,7 +8,11 @@ const DEACCELERATION: float = 2
 const DASH_COOLDOWN: float = 0.3
 const DASH_TIME: float = 0.15
 const DASH_SPEED: float = 300
-
+const DASH_COST: float = 20
+const MOUSE_SENSITIVITY: float = 0.05
+const ENERGY_TIMOUT: float = 5
+const MAX_ENERGY: float = 100
+const ENERGY_RECHARGE: float = 12.5
 
 @onready var camera = $OrientationManager/PlayerCamera
 @onready var orientation = $OrientationManager
@@ -16,18 +20,18 @@ const DASH_SPEED: float = 300
 @onready var sub_viewport = $OrientationManager/PlayerCamera/EquipmentViewportContainer/EquipmentViewport
 @onready var equipment_manager:EquipmentManager = $OrientationManager/PlayerCamera/EquipmentViewportContainer/EquipmentViewport/EquipmentManager
 @onready var dash_node = $DashNode
-
+@onready var energy_node = $EnergyNode
 
 var direction: Vector3 = Vector3()
 var dash_direction: Vector3 = Vector3()
 
-var MOUSE_SENSITIVITY: float = 0.05
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	resize_sub_viewport()
 	get_tree().get_root().size_changed.connect(resize_sub_viewport)
 	dash_node.setup(DASH_COOLDOWN, DASH_TIME)
+	energy_node.setup(ENERGY_TIMOUT, MAX_ENERGY, ENERGY_RECHARGE)
 	
 func resize_sub_viewport():
 	sub_viewport.size = DisplayServer.window_get_size()
@@ -45,7 +49,8 @@ func process_input():
 	
 	if Input.is_action_just_pressed("shift") and dash_node.dash_ready():
 		dash_direction = direction
-		dash_node.start_dash()
+		if energy_node.try_then_burn(DASH_COST):
+			dash_node.start_dash()
 		
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_SPEED
