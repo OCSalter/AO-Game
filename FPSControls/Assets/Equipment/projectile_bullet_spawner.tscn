@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx8ioyybw1vcv"]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/projectile_bullet_spawner.gd" id="1_bpu3d"]
+
+[node name="Projectile_Bullet_Spawner" type="Node3D"]
+script = ExtResource("1_bpu3d")
+size = null
+damage = null
+speed = null

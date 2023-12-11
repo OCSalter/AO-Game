@@ -1,4 +1,5 @@
 extends Node3D
+class_name EnergyNode
 
 @onready var empty_timer = $EmptyTimer
 
@@ -7,11 +8,11 @@ var current_meter: float
 var recharge_rate: float
 
 
-func setup(wait_time: float = 0.5, starting_meter: float = 100, starting_recharge_rate: float = 5):
-	empty_timer.wait_time = wait_time
-	max_meter = starting_meter
+func setup(_wait_time: float = 0.5, _max_meter: float = 100, _starting_recharge_rate: float = 5):
+	empty_timer.wait_time = _wait_time
+	max_meter = _max_meter
 	current_meter = max_meter
-	recharge_rate = starting_recharge_rate
+	recharge_rate = _starting_recharge_rate
 	
 func _physics_process(delta):
 	if can_recharge():
@@ -24,7 +25,7 @@ func try_then_burn(amount: float) -> bool:
 	return true
 	
 func burn_meter(amount: float):
-	current_meter = current_meter - amount if current_meter > amount else 0
+	current_meter = current_meter - amount if current_meter > amount else 0.0
 	if current_meter == 0:
 		empty_timer.start()
 	

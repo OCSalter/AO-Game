@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c64bmw38umhl3"]
+[gd_scene load_steps=4 format=3 uid="uid://c64bmw38umhl3"]
 
 [ext_resource type="Script" path="res://Scripts/Equipment/EquipmentManager.gd" id="1_uqgfk"]
 [ext_resource type="PackedScene" uid="uid://5o5mwvvr4nlm" path="res://Assets/Equipment/Shotgun.tscn" id="1_xy7ut"]
+[ext_resource type="PackedScene" uid="uid://dnfvdptf177fc" path="res://Assets/Equipment/HML_Burst.tscn" id="3_wy22t"]
 
 [node name="EquipmentManager" type="Node3D"]
 script = ExtResource("1_uqgfk")
@@ -14,3 +15,8 @@ fov = 35.0
 
 [node name="Shotgun" parent="Equipment" instance=ExtResource("1_xy7ut")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, 0.205009, -0.296077, -0.691877)
+visible = false
+
+[node name="HML_Burst" parent="Equipment" instance=ExtResource("3_wy22t")]
+transform = Transform3D(-1.03121e-08, 0, 0.235914, 0, 0.235914, 0, -0.235914, 0, -1.03121e-08, 0.210968, -0.0903667, -0.632445)
+visible = false

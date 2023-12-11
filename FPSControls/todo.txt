@@ -1,7 +1,11 @@
 - Weapon Selection
 
-- Hitscan
+- Projectile Bullets
 
-- Projectile bullets
+- Homing Missles
 
-- Health Class
+- Crosshair
+
+- Lock On
+
+- Grapple Hook
