@@ -23,7 +23,6 @@ func alt_fire(_s: PlayerBody) -> void:
 	pass
 	
 func _spawn_projectile():
-	print(player_reference)
 	var random_offset = Vector3(randf_range(-0.1,0.1),randf_range(-0.1,0.1), 0)
 	var projectile_transform = fire_point.global_transform
 	var projectile_instance = projectile_obj.instantiate()

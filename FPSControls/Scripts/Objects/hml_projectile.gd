@@ -5,7 +5,7 @@ class_name HML_Projectile
 const start_speed = 2
 const end_speed = 300
 
-const damage = 4
+const damage = 1
 
 var speed = start_speed
 @onready var delete_timer = $DeleteTimer
@@ -13,8 +13,8 @@ var speed = start_speed
 
 func _physics_process(delta):
 	var _coll = move_and_collide(global_transform.basis.x * speed * delta)
-	if _coll:
-		
+	if _coll and _coll.get_collider().has_method("bullet_hit"):
+		_coll.get_collider().bullet_hit(damage, self.global_transform)
 		set_physics_process(false)
 
 func _on_explode_timer_timeout():
