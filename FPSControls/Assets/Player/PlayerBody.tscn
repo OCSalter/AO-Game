@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxyfh7kxfdmrs"]
+[gd_scene load_steps=7 format=3 uid="uid://dxyfh7kxfdmrs"]
 
 [ext_resource type="PackedScene" uid="uid://c64bmw38umhl3" path="res://Assets/Player/EquipmentManager.tscn" id="1_g6qps"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerBody.gd" id="1_ly8rf"]
 [ext_resource type="PackedScene" uid="uid://cbot5u4kvexfd" path="res://Assets/Player/dash_node.tscn" id="3_cq2dp"]
 [ext_resource type="PackedScene" uid="uid://d0l7yolkys04g" path="res://Assets/Player/energy_node.tscn" id="4_oy8qm"]
+[ext_resource type="PackedScene" uid="uid://dbarcg16o6rxb" path="res://Assets/Entities/health_node.tscn" id="5_qsxin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i28xy"]
 
@@ -38,3 +39,5 @@ render_target_update_mode = 4
 [node name="DashNode" parent="." instance=ExtResource("3_cq2dp")]
 
 [node name="EnergyNode" parent="." instance=ExtResource("4_oy8qm")]
+
+[node name="HealthNode" parent="." instance=ExtResource("5_qsxin")]

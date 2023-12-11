@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name PlayerBody
+
 const GRAVITY = -30.8
 const JUMP_SPEED: int = 15
 const MAX_SPEED: float = 30
@@ -19,19 +21,21 @@ const ENERGY_RECHARGE: float = 12.5
 @onready var view_model_camera = $OrientationManager/PlayerCamera/EquipmentViewportContainer/EquipmentViewport/EquipmentManager
 @onready var sub_viewport = $OrientationManager/PlayerCamera/EquipmentViewportContainer/EquipmentViewport
 @onready var equipment_manager:EquipmentManager = $OrientationManager/PlayerCamera/EquipmentViewportContainer/EquipmentViewport/EquipmentManager
-@onready var dash_node = $DashNode
-@onready var energy_node = $EnergyNode
+@onready var dash_node: DashNode = $DashNode
+@onready var energy_node: EnergyNode = $EnergyNode
+@onready var health_node: HealthNode = $HealthNode
 
 var direction: Vector3 = Vector3()
 var dash_direction: Vector3 = Vector3()
-
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	resize_sub_viewport()
 	get_tree().get_root().size_changed.connect(resize_sub_viewport)
+	
 	dash_node.setup(DASH_COOLDOWN, DASH_TIME)
 	energy_node.setup(ENERGY_TIMOUT, MAX_ENERGY, ENERGY_RECHARGE)
+	equipment_manager.setup(self)
 	
 func resize_sub_viewport():
 	sub_viewport.size = DisplayServer.window_get_size()
@@ -56,10 +60,10 @@ func process_input():
 		velocity.y = JUMP_SPEED
 		
 	if Input.is_action_just_pressed("fire"):
-		equipment_manager.fire(camera.global_position, camera.global_transform)
+		equipment_manager.fire(self)
 		
 	if Input.is_action_just_pressed("altfire"):
-		equipment_manager.alt_fire(camera.global_position, camera.global_transform)
+		equipment_manager.alt_fire(self)
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:

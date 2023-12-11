@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8gbcowtxya74"]
+[gd_scene load_steps=6 format=3 uid="uid://c8gbcowtxya74"]
 
 [ext_resource type="Script" path="res://Assets/Objects/target.gd" id="1_8ge2d"]
+[ext_resource type="PackedScene" uid="uid://dbarcg16o6rxb" path="res://Assets/Entities/health_node.tscn" id="2_6pank"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6a1dl"]
 
@@ -19,3 +20,5 @@ shape = SubResource("BoxShape3D_6a1dl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ifv64")
+
+[node name="HealthNode" parent="." instance=ExtResource("2_6pank")]

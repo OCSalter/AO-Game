@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnfvdptf177fc"]
+
+[ext_resource type="Script" path="res://Scripts/Equipment/HML_Burst.gd" id="1_aqdme"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_og062"]
+
+[node name="HML_Burst" type="Node3D"]
+script = ExtResource("1_aqdme")
+
+[node name="Cooldown_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.79901, 0, 0, 0, 0.227055, 0, 0, 0, 0.545227, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_og062")
+
+[node name="FirePoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50844, 0, 0)
+
+[node name="Burst_Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="Burst_Timer" to="." method="_on_burst_timer_timeout"]
