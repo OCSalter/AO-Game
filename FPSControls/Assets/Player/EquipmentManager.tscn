@@ -19,3 +19,4 @@ visible = false
 
 [node name="HML_Burst" parent="Equipment" instance=ExtResource("3_wy22t")]
 transform = Transform3D(-1.03121e-08, 0, 0.235914, 0, 0.235914, 0, -0.235914, 0, -1.03121e-08, 0.210968, -0.0903667, -0.632445)
+visible = false

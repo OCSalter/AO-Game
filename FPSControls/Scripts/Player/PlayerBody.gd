@@ -64,6 +64,8 @@ func process_input():
 		
 	if Input.is_action_just_pressed("altfire"):
 		equipment_manager.alt_fire(self)
+	if Input.is_action_just_pressed("switch"):
+		equipment_manager.switch()
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
