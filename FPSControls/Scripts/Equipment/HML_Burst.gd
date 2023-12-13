@@ -28,10 +28,11 @@ func alt_fire(_s: PlayerBody) -> void:
 	var collision = space.intersect_ray(query)
 	if collision and collision.collider.has_method("bullet_hit"):
 		target_reference = collision.collider
+		print(target_reference)
 	else: 
 		target_reference = null
 		
-func launch():
+func launch() -> void:
 	if fired < BURST_COUNT:
 		_spawn_projectile()
 		fired += 1
@@ -39,16 +40,12 @@ func launch():
 	else:
 		fired = 0
 	
-func _spawn_projectile():
-	var random_offset = Vector3(randf_range(-0.1,0.1),randf_range(-0.1,0.1), 0)
-	var projectile_transform = fire_point.global_transform
+func _spawn_projectile() -> void:
 	var projectile_instance = projectile_obj.instantiate()
-	
-	projectile_transform.origin += random_offset
-	projectile_instance.global_transform = projectile_transform
+	projectile_instance.global_transform = fire_point.global_transform
+	projectile_instance.target = target_reference
 	projectile_instance.add_collision_exception_with(player_reference)
 	get_tree().get_root().add_child(projectile_instance)
 
-
-func _on_burst_timer_timeout():
+func _on_burst_timer_timeout() -> void:
 	launch()
