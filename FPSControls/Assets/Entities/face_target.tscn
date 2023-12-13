@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfklbt2weehvw"]
+
+[ext_resource type="Script" path="res://Scripts/Entites/FaceTarget.gd" id="1_kifcp"]
+
+[node name="FaceTarget" type="Node3D"]
+script = ExtResource("1_kifcp")
