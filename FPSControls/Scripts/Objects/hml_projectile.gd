@@ -13,9 +13,18 @@ var speed = start_speed
 
 func _physics_process(delta):
 	var _coll = move_and_collide(global_transform.basis.x * speed * delta)
-	if _coll and _coll.get_collider().has_method("bullet_hit"):
-		_coll.get_collider().bullet_hit(damage, self.global_transform)
+	_check_collision(_coll)
+		
+		
+func _check_collision(coll: KinematicCollision3D):
+	if(coll):
+		_check_damage_available(coll)
 		set_physics_process(false)
+		queue_free()
+	
+func _check_damage_available(coll: KinematicCollision3D):
+	if coll.get_collider().has_method("bullet_hit"):
+		coll.get_collider().bullet_hit(damage, self.global_transform)
 
 func _on_explode_timer_timeout():
 	delete_timer.start()
