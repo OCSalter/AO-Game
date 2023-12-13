@@ -3,6 +3,8 @@ extends Equipment
 class_name HML_Burst
 
 const BURST_COUNT = 4
+const RANGE = 2000
+
 var fired = 0
 
 @onready var fire_point = $FirePoint
@@ -10,6 +12,8 @@ var fired = 0
 @onready var burst_timer = $Burst_Timer
 
 var player_reference: PlayerBody = null
+
+var target_reference: Node3D = null
 
 var projectile_obj = preload("res://Assets/Objects/hml_projectile.tscn")
 
@@ -20,7 +24,15 @@ func fire(_s: PlayerBody) -> void:
 		cooldown_timer.start()
 
 func alt_fire(_s: PlayerBody) -> void:
-	pass
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(_s.camera.global_position, _s.camera.global_position - _s.camera.global_transform.basis.z * RANGE)
+	var collision = space.intersect_ray(query)
+	if collision and collision.collider.has_method("bullet_hit"):
+		target_reference = collision.collider
+	else: 
+		target_reference = null
+		
+
 	
 func _spawn_projectile():
 	var random_offset = Vector3(randf_range(-0.1,0.1),randf_range(-0.1,0.1), 0)
